@@ -35,7 +35,16 @@ for(var y=0;y<30;y++){
 }
 
 function addPlants(){
+	//ジャングルの垂直方向の範囲内の乱数
+	var k=Math.floor(Math.random()*10);
+	k+=10;
+	//ジャングルの水平方向の範囲内の乱数
+	var l=Math.floor(Math.random()*10);
+	l+=45;
+	plants[k][l]="*";
+
 	var i=Math.floor(Math.random()*100);
 	var j=Math.floor(Math.random()*30);
 	plants[j][i]="*";
+	
 }
