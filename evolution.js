@@ -4,7 +4,8 @@ function skipDay(){
 }
 
 function updateWorld(){
-	addPlants();
+	move();
+	addPlants();	
 }
 
 function drawWorld(){
@@ -15,7 +16,7 @@ function drawWorld(){
 
 	for(var y=0;y<30;y++){
 		worldArray[y]=new Array();	
-		for(var x=0;x<100;x++){
+		for(var x=0;x<100;x++){			
 			worldArray[y][x]=plants[y][x];
 			if(animals[y][x]==="M"){
 				worldArray[y][x]=animals[y][x];
@@ -62,15 +63,21 @@ animals[15][50]="M";
 
 /*
 //方角
-var direction=Math.floor(Math.random()*8);
+var direction=Math.floor(Math.random()*8);*/
 
 function move(){
-	//居る場所
-	//var position=new
-	var m
+	
+//左に動かす
+for(var m=0;m<30;m++){
+	for(var n=0;n<100;n++){
+		if(animals[m][n]==="M"){
+			animals[m][n-1]="M";
+			animals[m][n]=".";
+		}
+	}
+}
 
-
-	switch(direction){
+	/*switch(direction){
 		case 0://左上
 			position[m][n]=;
 			break;
@@ -95,5 +102,5 @@ function move(){
 		case 7:
 			
 			break;
-	}
-}*/
+	}*/
+}
