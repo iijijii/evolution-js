@@ -44,20 +44,31 @@ var plant=function(c,d){
 var plants=new Array();
 
 function addPlants(){
-	//ジャングルの垂直方向の範囲内の乱数
-	var k=Math.floor(Math.random()*10);
-	k+=10;
 	//ジャングルの水平方向の範囲内の乱数
+	var k=Math.floor(Math.random()*10);
+	k+=45;
+	//ジャングルの垂直方向の範囲内の乱数
 	var l=Math.floor(Math.random()*10);
-	l+=45;
-	var plant1=new plant(l,k);
-	plants.push(plant1);
-
+	l+=10;
+	var plant1=new plant(k,l);
+	if(plants.length==0){
+		plants.push(plant1);
+	}
+	for(var q=0;q<plants.length;q++){
+		if(plants[q].c!=k && plants[q].d!=l){
+			plants.push(plant1);
+		}
+	}
+	
 	var i=Math.floor(Math.random()*100);
 	var j=Math.floor(Math.random()*30);
 	var plant2=new plant(i,j);
-	plants.push(plant2);
-	
+	for(var s=0;s<plants.length;s++){
+		if(plants[s].c!=i && plants[s].d!=j){
+			plants.push(plant2);
+		}
+	}
+
 }
 
 var animal=function(direction,a,b){
