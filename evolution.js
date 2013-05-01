@@ -18,11 +18,9 @@ function drawWorld(){
 		worldArray[y]=new Array();	
 		for(var x=0;x<100;x++){			
 			worldArray[y][x]=".";
-			for(var p=0;p<plants.length;p++){
-				if(x==plants[p].c&&y==plants[p].d){
-					worldArray[y][x]="*";
-				}
-			}	
+			if(plants[y][x]==flag){
+				worldArray[y][x]="*";
+			}
 			if(x==firstAnimal.a&&y==firstAnimal.b){
 				worldArray[y][x]="M";
 			}
@@ -35,13 +33,16 @@ function drawWorld(){
 
 	world.innerText=line;
 }
-
-var plant=function(c,d){
-	this.c=c;//x
-	this.d=d;//y
-}
+/*********************plant*****************************/
+var flag=1;
 
 var plants=new Array();
+for(var y=0;y<30;y++){
+ 	plants[y]=new Array();  
+  	for(var x=0;x<100;x++){
+    plants[y][x]="";  
+  	}
+}
 
 function addPlants(){
 	//ジャングルの水平方向の範囲内の乱数
@@ -50,27 +51,15 @@ function addPlants(){
 	//ジャングルの垂直方向の範囲内の乱数
 	var l=Math.floor(Math.random()*10);
 	l+=10;
-	var plant1=new plant(k,l);
-	if(plants.length==0){
-		plants.push(plant1);
-	}
-	for(var q=0;q<plants.length;q++){
-		if(plants[q].c!=k && plants[q].d!=l){
-			plants.push(plant1);
-		}
-	}
+	plants[l][k]=flag;
 	
 	var i=Math.floor(Math.random()*100);
 	var j=Math.floor(Math.random()*30);
-	var plant2=new plant(i,j);
-	for(var s=0;s<plants.length;s++){
-		if(plants[s].c!=i && plants[s].d!=j){
-			plants.push(plant2);
-		}
-	}
+	plants[j][i]=flag;
+	
 
 }
-
+/******************animal*********************/
 var animal=function(direction,a,b){
 	this.direction=direction;
 	this.a=a;//x
