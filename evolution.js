@@ -46,15 +46,15 @@ for(var y=0;y<30;y++){
 
 function addPlants(){
 	//ジャングルの水平方向の範囲内の乱数
-	var k=Math.floor(Math.random()*10);
+	var k=generateRandom(9);
 	k+=45;
 	//ジャングルの垂直方向の範囲内の乱数
-	var l=Math.floor(Math.random()*10);
+	var l=generateRandom(9);
 	l+=10;
 	plants[l][k]=flag;
 	
-	var i=Math.floor(Math.random()*100);
-	var j=Math.floor(Math.random()*30);
+	var i=generateRandom(99);
+	var j=generateRandom(29);
 	plants[j][i]=flag;
 	
 
@@ -69,7 +69,7 @@ var animal=function(direction,a,b){
 var animals=new Array();
 
 //方角
-var directions=Math.floor(Math.random()*8);
+var directions=generateRandom(7);
 
 var firstAnimal=new animal(directions,50,15);//TODO,配列に入れる
 
@@ -119,4 +119,8 @@ function move(animal){
 	if(animal.b<0){
 		animal.b+=30;
 	}
+}
+/***************************************************************/
+function generateRandom(i){//iまでの乱数
+	return Math.floor(Math.random()*(i+1));
 }
