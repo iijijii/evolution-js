@@ -75,7 +75,7 @@ var firstAnimal=new animal(directions,50,15);//TODO,配列に入れる
 
 
 function move(animal){
-	
+
 	switch(animal.direction){
 		case 0://左上
 			animal.a=animal.a-1;
@@ -105,5 +105,18 @@ function move(animal){
 		case 7://左
 			animal.a=animal.a-1;
 			break;
+	}
+
+	if(animal.a>=100){
+		animal.a-=100;
+	}
+	if(animal.a<0){
+		animal.a+=99;
+	}
+	if(animal.b>=30){
+		animal.b-=30;
+	}
+	if(animal.b<0){
+		animal.b+=30;
 	}
 }
