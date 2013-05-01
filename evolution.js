@@ -6,6 +6,7 @@ function skipDay(){
 function updateWorld(){
 	turn(firstAnimal);
 	move(firstAnimal);
+	eat(firstAnimal);
 	addPlants();	
 }
 
@@ -152,4 +153,11 @@ function generateGene(){
 /***************************************************************/
 function generateRandom(i){//iまでの乱数
 	return Math.floor(Math.random()*(i+1));
+}
+/************************eat*********************************/
+
+function eat(animal){
+	if(plants[animal.b][animal.a]=flag){
+		plants[animal.b][animal.a]="";
+	}
 }
