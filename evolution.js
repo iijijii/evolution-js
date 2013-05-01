@@ -72,7 +72,7 @@ var animals=new Array();
 
 //方角
 var directions=generateRandom(7);
-var firstGene=[1,2,1,1,2,10,1,2];
+var firstGene=generateGene();
 
 var firstAnimal=new animal(directions,50,15,firstGene);//TODO,配列に入れる
 
@@ -140,6 +140,14 @@ function turn(animal){
 		}
 	}
 
+}
+
+function generateGene(){
+	var gene=new Array();
+	for(var i=0;i<10;i++){
+		gene[i]=generateRandom(9)+1;
+	}
+	return gene;
 }
 /***************************************************************/
 function generateRandom(i){//iまでの乱数
