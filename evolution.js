@@ -4,7 +4,7 @@ function skipDay(){
 }
 
 function updateWorld(){
-	//move();
+	move(firstAnimal);
 	addPlants();	
 }
 
@@ -65,43 +65,37 @@ var firstAnimal=new animal(1,50,15);//TODO方角,配列に入れる
 
 //方角
 /*var direction=Math.floor(Math.random()*8);*/
-/*
+
 function move(animal){
 	
-for(var m=0;m<30;m++){
-	for(var n=0;n<100;n++){
-		
-			switch(animal.direction){
-				case 0://左上
-					animals[m-1][n-1]="M";
-					break;
-				case 1://上
-					animals[m-1][n]="M";
-					break;
-				case 2://右上
-					animals[m-1][n+1]="M";
-					break;
-				case 3://右
-					animals[m][n-1]="M";
-					break;
-				case 4://右下
-					
-					break;
-				case 5:
-				
-					break;
-				case 6:
-				
-					break;
-				case 7:
-					animals[m][n-1]="M";
-					break;
-			}
-			
-			animals[m][n]=".";
-		}
+	switch(animal.direction){
+		case 0://左上
+			animal.a=animal.a-1;
+			animal.b=animal.b-1;
+			break;
+		case 1://上
+			animal.b=animal.b-1;
+			break;
+		case 2://右上
+			animal.a=animal.a+1;
+			animal.b=animal.b-1;
+			break;
+		case 3://右
+			animal.a=animal.a+1;
+			break;
+		case 4://右下
+			animal.a=animal.a+1;
+			animal.b=animal.b+1;
+			break;
+		case 5://下
+			animal.b=animal.b+1;
+			break;
+		case 6://左下
+			animal.b=animal.b+1;
+			animal.a=animal.a-1;
+			break;
+		case 7://左
+			animal.a=animal.a-1;
+			break;
 	}
 }
-
-
-}*/
