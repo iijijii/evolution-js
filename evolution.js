@@ -17,7 +17,12 @@ function drawWorld(){
 	for(var y=0;y<30;y++){
 		worldArray[y]=new Array();	
 		for(var x=0;x<100;x++){			
-			worldArray[y][x]=plants[y][x];		
+			worldArray[y][x]=".";
+			for(var p=0;p<plants.length;p++){
+				if(x==plants[p].c&&y==plants[p].d){
+					worldArray[y][x]="*";
+				}
+			}	
 			if(x==firstAnimal.a&&y==firstAnimal.b){
 				worldArray[y][x]="M";
 			}
@@ -27,16 +32,16 @@ function drawWorld(){
 		line+="\n";
 	}
 
+
 	world.innerText=line;
 }
 
-var plants=new Array();
-for(var y=0;y<30;y++){
-	plants[y]=new Array();	
-	for(var x=0;x<100;x++){
-		plants[y][x]=".";	
-	}
+var plant=function(c,d){
+	this.c=c;//x
+	this.d=d;//y
 }
+
+var plants=new Array();
 
 function addPlants(){
 	//ジャングルの垂直方向の範囲内の乱数
@@ -45,11 +50,13 @@ function addPlants(){
 	//ジャングルの水平方向の範囲内の乱数
 	var l=Math.floor(Math.random()*10);
 	l+=45;
-	plants[k][l]="*";
+	var plant1=new plant(l,k);
+	plants.push(plant1);
 
 	var i=Math.floor(Math.random()*100);
 	var j=Math.floor(Math.random()*30);
-	plants[j][i]="*";
+	var plant2=new plant(i,j);
+	plants.push(plant2);
 	
 }
 
@@ -60,11 +67,12 @@ var animal=function(direction,a,b){
 }
 
 var animals=new Array();
-var firstAnimal=new animal(1,50,15);//TODO方角,配列に入れる
-
 
 //方角
-/*var direction=Math.floor(Math.random()*8);*/
+var directions=Math.floor(Math.random()*8);
+
+var firstAnimal=new animal(directions,50,15);//TODO,配列に入れる
+
 
 function move(animal){
 	
