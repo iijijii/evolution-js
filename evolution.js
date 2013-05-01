@@ -4,24 +4,25 @@ function skipDay(){
 }
 
 function updateWorld(){
-	move();
+	//move();
 	addPlants();	
 }
 
 function drawWorld(){
 	
 	var world =document.getElementById("world");
-	var line="";
+	var line="";//表示用
 	var worldArray=new Array();
 
 	for(var y=0;y<30;y++){
 		worldArray[y]=new Array();	
 		for(var x=0;x<100;x++){			
-			worldArray[y][x]=plants[y][x];
-			if(animals[y][x]==="M"){
-				worldArray[y][x]=animals[y][x];
+			worldArray[y][x]=plants[y][x];		
+			if(x==firstAnimal.a&&y==firstAnimal.b){
+				worldArray[y][x]="M";
 			}
-			line+=worldArray[y][x];	
+			line+=worldArray[y][x];
+			
 		}
 		line+="\n";
 	}
@@ -52,55 +53,55 @@ function addPlants(){
 	
 }
 
-var animals=new Array();
-for(var y1=0;y1<30;y1++){
-	animals[y1]=new Array();	
-	for(var x1=0;x1<100;x1++){
-		animals[y1][x1]=".";	
-	}
+var animal=function(direction,a,b){
+	this.direction=direction;
+	this.a=a;//x
+	this.b=b;//y
 }
-animals[15][50]="M";
 
-/*
+var animals=new Array();
+var firstAnimal=new animal(1,50,15);//TODO方角,配列に入れる
+
+
 //方角
-var direction=Math.floor(Math.random()*8);*/
-
-function move(){
+/*var direction=Math.floor(Math.random()*8);*/
+/*
+function move(animal){
 	
-//左に動かす
 for(var m=0;m<30;m++){
 	for(var n=0;n<100;n++){
-		if(animals[m][n]==="M"){
-			animals[m][n-1]="M";
+		
+			switch(animal.direction){
+				case 0://左上
+					animals[m-1][n-1]="M";
+					break;
+				case 1://上
+					animals[m-1][n]="M";
+					break;
+				case 2://右上
+					animals[m-1][n+1]="M";
+					break;
+				case 3://右
+					animals[m][n-1]="M";
+					break;
+				case 4://右下
+					
+					break;
+				case 5:
+				
+					break;
+				case 6:
+				
+					break;
+				case 7:
+					animals[m][n-1]="M";
+					break;
+			}
+			
 			animals[m][n]=".";
 		}
 	}
 }
 
-	/*switch(direction){
-		case 0://左上
-			position[m][n]=;
-			break;
-		case 1://上
-			
-			break;
-		case 2://右上
-		
-			break;
-		case 3://右
-			
-			break;
-		case 4://右下
-			
-			break;
-		case 5:
-		
-			break;
-		case 6:
-		
-			break;
-		case 7:
-			
-			break;
-	}*/
-}
+
+}*/
