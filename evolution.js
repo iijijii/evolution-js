@@ -62,11 +62,12 @@ function addPlants(){
 
 }
 /******************animal*********************/
-var animal=function(direction,a,b,gene){
+var animal=function(direction,a,b,gene,energy){
 	this.direction=direction;
 	this.a=a;//x
 	this.b=b;//y
 	this.gene=gene;
+	this.energy=energy;
 }
 
 var animals=new Array();
@@ -74,6 +75,7 @@ var animals=new Array();
 //方角
 var directions=generateRandom(7);
 var firstGene=generateGene();
+var　firstEnergy=200;
 
 var firstAnimal=new animal(directions,50,15,firstGene);//TODO,配列に入れる
 
@@ -123,6 +125,8 @@ function move(animal){
 	if(animal.b<0){
 		animal.b+=30;
 	}
+
+	animal.energy-=1;
 }
 
 
@@ -159,5 +163,6 @@ function generateRandom(i){//iまでの乱数
 function eat(animal){
 	if(plants[animal.b][animal.a]=flag){
 		plants[animal.b][animal.a]="";
+		animal.energy+=80;
 	}
 }
