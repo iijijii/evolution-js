@@ -27,7 +27,7 @@ function drawWorld(){
 		worldArray[y]=new Array();	
 		for(var x=0;x<100;x++){			
 			worldArray[y][x]=".";
-			if(plants[y][x]==1){
+			if(plants[y][x]==true){
 				worldArray[y][x]="*";
 			}
 			for(var i=0;i<animals.length;i++){
@@ -45,7 +45,7 @@ function drawWorld(){
 	world.innerText=line;
 }
 /*********************plant*****************************/
-var flag=0;
+var flag=false;
 
 var plants=new Array();
 for(var y=0;y<30;y++){
@@ -57,7 +57,7 @@ for(var y=0;y<30;y++){
 
 function addPlants(){
 	//ジャングルの水平方向の範囲内の乱数
-	flag=1;
+	flag=true;
 	var k=generateRandom(9);
 	k+=45;
 	//ジャングルの垂直方向の範囲内の乱数
