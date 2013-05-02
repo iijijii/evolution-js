@@ -2,7 +2,7 @@ function skipDay(){
 	updateWorld();
 	drawWorld();
 	for(var i=0;i<animals.length;i++){
-	testEnergy(animals[i]);
+		testEnergy(animals[i]);
 	}
 }
 
@@ -12,6 +12,7 @@ function updateWorld(){
 		turn(animals[i]);
 		move(animals[i]);
 		eat(animals[i]);
+		reproduce(animals[i]);
 	}
 	addPlants();	
 }
@@ -86,10 +87,8 @@ var directions=generateRandom(7);
 var firstGene=generateGene();
 var　firstEnergy=200;
 
-var firstAnimal=new animal(directions,50,15,firstGene,firstEnergy);//TODO,配列に入れる
+var firstAnimal=new animal(directions,50,15,firstGene,firstEnergy);
 animals.push(firstAnimal);
-var secondAnimal=new animal(directions,20,17,generateGene(),firstEnergy);
-animals.push(secondAnimal);
 
 
 function move(animal){
@@ -138,7 +137,7 @@ function move(animal){
 		animal.b+=30;
 	}
 
-	animal.energy-=50;
+	animal.energy-=1;
 }
 
 
@@ -168,7 +167,7 @@ function generateGene(){
 	return gene;
 }
 /***************************************************************/
-function generateRandom(i){//０からiまでの乱数
+function generateRandom(i){//０からiまでの整数の乱数
 	return Math.floor(Math.random()*(i+1));
 }
 /************************eat*********************************/
@@ -180,12 +179,28 @@ function eat(animal){
 	}
 }
 
-
-
 /***********************test***************************/
 function testEnergy(animal){ 
 
 	document.getElementById("energy").innerText=
-	"energy"+animal.energy+"x"+animal.a+"y"+animal.b+"\n"+"animalength"+animals.length;
+	"energy"+animal.energy+"x"+animal.a+"y"+animal.b+"\n"+
+	"animalength"+animals.length;
 
+}
+/*********************************************************/
+
+function reproduce(parent){
+
+	if(parent.energy>=200){
+		var child=new animal(directions,parent.a,parent.b,mutateGene(parent),Math.floor(parent.energy/2));
+		animals.push(child);
+	}
+}
+
+function mutateGene(parent){
+	var selectedIngredient=generateRandom(7);
+	var modulation=generateRandom(2)-1;
+
+	parent.gene[selectedIngredient]+=modulation;
+	return parent.gene;
 }
