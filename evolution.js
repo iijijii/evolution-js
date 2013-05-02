@@ -4,6 +4,7 @@ function skipDay(){
 }
 
 function updateWorld(){
+	//die(firstAnimal);
 	turn(firstAnimal);
 	move(firstAnimal);
 	eat(firstAnimal);
@@ -77,7 +78,7 @@ var directions=generateRandom(7);
 var firstGene=generateGene();
 var　firstEnergy=200;
 
-var firstAnimal=new animal(directions,50,15,firstGene);//TODO,配列に入れる
+var firstAnimal=new animal(directions,50,15,firstGene,firstEnergy);//TODO,配列に入れる
 
 
 function move(animal){
@@ -135,13 +136,14 @@ function turn(animal){
 	for(var i=0;i<8;i++){
 		denominator+=animal.gene[i];
 	}
-	// 分母の数値までの乱数
-	var randomNumber=generateRandom(denominator);
+	// １から分母の数値までの乱数
+	var randomNumber=generateRandom(denominator-1)+1;
 	var value=0;
 	for(var j=0;j<8;j++){
 		value+=animal.gene[j];
-		if(value<randomNumber){
-			animal.direction=j-1;
+		if(randomNumber<=value){
+			animal.direction=j;
+			break;
 		}
 	}
 
@@ -155,7 +157,7 @@ function generateGene(){
 	return gene;
 }
 /***************************************************************/
-function generateRandom(i){//iまでの乱数
+function generateRandom(i){//０からiまでの乱数
 	return Math.floor(Math.random()*(i+1));
 }
 /************************eat*********************************/
