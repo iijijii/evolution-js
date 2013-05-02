@@ -1,9 +1,10 @@
 function skipDay(){
+	
 	updateWorld();
 	drawWorld();
 	for(var i=0;i<animals.length;i++){
 		testEnergy(animals[i]);
-	}
+	}	
 }
 
 function updateWorld(){
@@ -168,7 +169,7 @@ function turn(animal){
 
 function generateGene(){
 	var gene=new Array();
-	for(var i=0;i<10;i++){
+	for(var i=0;i<8;i++){
 		gene[i]=generateRandom(9)+1;
 	}
 	return gene;
@@ -190,7 +191,7 @@ function eat(animal){
 function testEnergy(animal){ 
 
 	document.getElementById("energy").innerText=
-	"energy"+animal.energy+"x"+animal.a+"y"+animal.b+"\n"+
+	"energy"+animal.energy+"gene"+animal.gene+"\n"+
 	"animalength"+animals.length;
 
 }
