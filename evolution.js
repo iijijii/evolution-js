@@ -114,13 +114,13 @@ function move(animal){
 			break;
 	}
 
-	if(animal.a>=100){
+	if(animal.a>99){
 		animal.a-=100;
 	}
 	if(animal.a<0){
-		animal.a+=99;
+		animal.a+=100;
 	}
-	if(animal.b>=30){
+	if(animal.b>29){
 		animal.b-=30;
 	}
 	if(animal.b<0){
