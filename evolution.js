@@ -1,14 +1,18 @@
 function skipDay(){
 	updateWorld();
 	drawWorld();
-	testEnergy(firstAnimal);
+	for(var i=0;i<animals.length;i++){
+	testEnergy(animals[i]);
+	}
 }
 
 function updateWorld(){
 	//die(firstAnimal);
-	turn(firstAnimal);
-	move(firstAnimal);
-	eat(firstAnimal);
+	for(var i=0;i<animals.length;i++){
+		turn(animals[i]);
+		move(animals[i]);
+		eat(animals[i]);
+	}
 	addPlants();	
 }
 
@@ -25,8 +29,10 @@ function drawWorld(){
 			if(plants[y][x]==1){
 				worldArray[y][x]="*";
 			}
-			if(x==firstAnimal.a&&y==firstAnimal.b){
-				worldArray[y][x]="M";
+			for(var i=0;i<animals.length;i++){
+				if(x==animals[i].a&&y==animals[i].b){
+					worldArray[y][x]="M";
+				}
 			}
 			line+=worldArray[y][x];
 			
@@ -81,6 +87,9 @@ var firstGene=generateGene();
 var　firstEnergy=200;
 
 var firstAnimal=new animal(directions,50,15,firstGene,firstEnergy);//TODO,配列に入れる
+animals.push(firstAnimal);
+var secondAnimal=new animal(directions,20,17,generateGene(),firstEnergy);
+animals.push(secondAnimal);
 
 
 function move(animal){
@@ -170,8 +179,13 @@ function eat(animal){
 		animal.energy+=80;
 	}
 }
+
+
+
 /***********************test***************************/
 function testEnergy(animal){ 
 
-	document.getElementById("energy").innerText=animal.energy;
+	document.getElementById("energy").innerText=
+	"energy"+animal.energy+"x"+animal.a+"y"+animal.b+"\n"+"animalength"+animals.length;
+
 }
