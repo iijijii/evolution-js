@@ -7,12 +7,19 @@ function skipDay(){
 }
 
 function updateWorld(){
-	//die(firstAnimal);
+
+	//淘汰する
 	for(var i=0;i<animals.length;i++){
-		turn(animals[i]);
-		move(animals[i]);
-		eat(animals[i]);
-		reproduce(animals[i]);
+		while(animals[i].energy==0){
+			animals.splice(i,1);
+		}	
+	}
+
+	for(var j=0;j<animals.length;j++){
+		turn(animals[j]);
+		move(animals[j]);
+		eat(animals[j]);
+		reproduce(animals[j]);
 	}
 	addPlants();	
 }
