@@ -170,4 +170,8 @@ function eat(animal){
 		animal.energy+=80;
 	}
 }
+/***********************test***************************/
+function testEnergy(animal){ 
 
+	document.getElementById("energy").innerText=animal.energy;
+}
