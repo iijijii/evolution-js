@@ -1,6 +1,7 @@
 function skipDay(){
 	updateWorld();
 	drawWorld();
+	testEnergy(firstAnimal);
 }
 
 function updateWorld(){
@@ -21,7 +22,7 @@ function drawWorld(){
 		worldArray[y]=new Array();	
 		for(var x=0;x<100;x++){			
 			worldArray[y][x]=".";
-			if(plants[y][x]==flag){
+			if(plants[y][x]==1){
 				worldArray[y][x]="*";
 			}
 			if(x==firstAnimal.a&&y==firstAnimal.b){
@@ -37,18 +38,19 @@ function drawWorld(){
 	world.innerText=line;
 }
 /*********************plant*****************************/
-var flag=1;
+var flag=0;
 
 var plants=new Array();
 for(var y=0;y<30;y++){
  	plants[y]=new Array();  
   	for(var x=0;x<100;x++){
-    plants[y][x]="";  
+    plants[y][x]=flag;  
   	}
 }
 
 function addPlants(){
 	//ジャングルの水平方向の範囲内の乱数
+	flag=1;
 	var k=generateRandom(9);
 	k+=45;
 	//ジャングルの垂直方向の範囲内の乱数
@@ -127,7 +129,7 @@ function move(animal){
 		animal.b+=30;
 	}
 
-	animal.energy-=1;
+	animal.energy-=50;
 }
 
 
@@ -163,8 +165,9 @@ function generateRandom(i){//０からiまでの乱数
 /************************eat*********************************/
 
 function eat(animal){
-	if(plants[animal.b][animal.a]=flag){
+	if(plants[animal.b][animal.a]==1){
 		plants[animal.b][animal.a]="";
 		animal.energy+=80;
 	}
 }
+
