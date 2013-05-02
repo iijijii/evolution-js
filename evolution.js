@@ -1,10 +1,17 @@
+function auto(){
+	setInterval("skipDay()",1000);
+}
+
 function skipDay(){
-	
-	updateWorld();
-	drawWorld();
-	for(var i=0;i<animals.length;i++){
-		testEnergy(animals[i]);
-	}	
+
+	var day=document.getElementById("days").value;
+	for(var j=0;j<parseInt(day);j++){
+		updateWorld();
+		drawWorld();
+		for(var i=0;i<animals.length;i++){
+			testEnergy(animals[i]);
+		}	
+	}
 }
 
 function updateWorld(){
