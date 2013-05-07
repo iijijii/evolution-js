@@ -213,11 +213,8 @@ function reproduce(parent){
 
 function mutateGene(parent){
 	
-	do{
-		var selectedIngredient=generateRandom(7);
-		var modulation=generateRandom(2)-1;
-	}while(modulation==-1&&parent.gene[selectedIngredient]==0
-		||modulation==1&&parent.gene[selectedIngredient]==10);
+	var selectedIngredient=generateRandom(7);
+	var modulation=generateRandom(2)-1;
 
 	parent.gene[selectedIngredient]+=modulation;
 	return parent.gene;
