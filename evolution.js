@@ -12,7 +12,9 @@ function auto(){
 function skipDay(){
 
 	var day=document.getElementById("days").value;
-
+	if(day==null||day==""){
+          day=1;
+     }
 	for(var j=0;j<parseInt(day);j++){
 		updateWorld();
 		for(var i=0;i<animals.length;i++){
