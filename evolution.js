@@ -1,10 +1,18 @@
 function auto(){
-	setInterval("skipDay()",1000);
+
+	if(document.getElementById("auto").checked){
+		autoSkip=setInterval("skipDay()",1000);
+	}
+	else{
+		clearInterval(autoSkip);
+	}
 }
+
 
 function skipDay(){
 
 	var day=document.getElementById("days").value;
+
 	for(var j=0;j<parseInt(day);j++){
 		updateWorld();
 		for(var i=0;i<animals.length;i++){
