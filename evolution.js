@@ -17,9 +17,6 @@ function skipDay(){
      }
 	for(var j=0;j<parseInt(day);j++){
 		updateWorld();
-		for(var i=0;i<animals.length;i++){
-			testEnergy(animals[i]);
-		}	
 	}
 	drawWorld();
 }
@@ -203,14 +200,6 @@ function eat(animal){
 	}
 }
 
-/***********************test***************************/
-function testEnergy(animal){ 
-
-	document.getElementById("energy").innerText=
-	"energy"+animal.energy+"gene"+animal.gene+"\n"+
-	"animalength"+animals.length;
-
-}
 /*********************************************************/
 
 function reproduce(parent){
