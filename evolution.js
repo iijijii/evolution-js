@@ -11,12 +11,11 @@ function auto(){
 
 function skipDay(){
 
-	var day=document.getElementById("days").value;
-	if(day==null||day==""){
-          day=1;
-     }
-	for(var j=0;j<parseInt(day);j++){
-		updateWorld();
+	var skipdays=parseInt(document.getElementById("days").value);
+	if(isNaN(skipdays)==false){
+		for(var j=0;j<skipdays;j++){
+			updateWorld();
+		}
 	}
 	drawWorld();
 }
