@@ -1,7 +1,9 @@
+var autoSkip;
+
 function auto(){
 
 	if(document.getElementById("auto").checked){
-		autoSkip=setInterval("skipDay()",1000);
+		autoSkip=setInterval(skipDay,1000);
 	}
 	else{
 		clearInterval(autoSkip);
