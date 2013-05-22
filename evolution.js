@@ -1,3 +1,6 @@
+
+
+
 var autoSkip;
 
 function auto(){
@@ -37,7 +40,7 @@ function updateWorld(){
 		eat(animals[j]);
 		reproduce(animals[j]);
 	}
-	addPlants();	
+	addPlants();
 }
 
 function drawWorld(){
@@ -216,6 +219,12 @@ function mutateGene(parent){
 	var selectedIngredient=generateRandom(7);
 	var modulation=generateRandom(2)-1;
 
-	parent.gene[selectedIngredient]+=modulation;
-	return parent.gene;
+	var childGene=new Array(8);
+	for(var i=0;i<childGene.length;i++){
+		childGene[i]=parent.gene[i];
+	}
+	childGene[selectedIngredient]=parent.gene[selectedIngredient]+modulation;
+	return childGene;
 }
+
+
