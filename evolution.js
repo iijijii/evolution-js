@@ -116,34 +116,34 @@ animals.push(firstAnimal);
 
 function move(animal){
 
+	function shift(i,j){
+		animal.a+=i;
+		animal.b+=j
+	}
 	switch(animal.direction){
 		case 0://左上
-			animal.a=animal.a-1;
-			animal.b=animal.b-1;
+			shift(-1,-1);
 			break;
 		case 1://上
-			animal.b=animal.b-1;
+			shift(0,-1);
 			break;
 		case 2://右上
-			animal.a=animal.a+1;
-			animal.b=animal.b-1;
+			shift(1,-1);
 			break;
 		case 3://右
-			animal.a=animal.a+1;
+			shift(1,0);
 			break;
 		case 4://右下
-			animal.a=animal.a+1;
-			animal.b=animal.b+1;
+			shift(1,1);
 			break;
 		case 5://下
-			animal.b=animal.b+1;
+			shift(0,1);
 			break;
 		case 6://左下
-			animal.b=animal.b+1;
-			animal.a=animal.a-1;
+			shift(-1,1);
 			break;
 		case 7://左
-			animal.a=animal.a-1;
+			shift(-1,0);
 			break;
 	}
 
