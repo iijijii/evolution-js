@@ -1,6 +1,3 @@
-
-
-
 var autoSkip;
 
 function auto(){
@@ -209,21 +206,27 @@ function eat(animal){
 function reproduce(parent){
 
 	if(parent.energy>=200){
-		var child=new animal(directions,parent.a,parent.b,mutateGene(parent),Math.floor(parent.energy/2));
+		parent.energy=Math.floor(parent.energy/2);
+		var child=new animal(parent.direction,parent.a,parent.b,mutateGene(parent),Math.floor(parent.energy/2));
 		animals.push(child);
 	}
 }
 
 function mutateGene(parent){
-	
-	var selectedIngredient=generateRandom(7);
-	var modulation=generateRandom(2)-1;
 
 	var childGene=new Array(8);
-	for(var i=0;i<childGene.length;i++){
-		childGene[i]=parent.gene[i];
-	}
-	childGene[selectedIngredient]=parent.gene[selectedIngredient]+modulation;
+
+	do{
+		var selectedIngredient=generateRandom(7);
+		var modulation=generateRandom(2)-1;
+		
+		for(var i=0;i<childGene.length;i++){
+			childGene[i]=parent.gene[i];
+		}
+		childGene[selectedIngredient]=parent.gene[selectedIngredient]+modulation;
+	
+	}while(childGene[selectedIngredient]<0)
+	
 	return childGene;
 }
 
