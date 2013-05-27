@@ -113,39 +113,16 @@ var　firstEnergy=200;
 var firstAnimal=new animal(directions,50,15,firstGene,firstEnergy);
 animals.push(firstAnimal);
 
+/****************************************************/
+//0から7で表された方角への移動分（配列の要素番号が向きを表す数値と一致）
+var shiftX= new Array(-1,0,1,1,1,0,-1,-1);
+var shiftY= new Array(-1,-1,-1,0,1,1,1,0);
 
 function move(animal){
-
-	function shift(i,j){
-		animal.a+=i;
-		animal.b+=j
-	}
-	switch(animal.direction){
-		case 0://左上
-			shift(-1,-1);
-			break;
-		case 1://上
-			shift(0,-1);
-			break;
-		case 2://右上
-			shift(1,-1);
-			break;
-		case 3://右
-			shift(1,0);
-			break;
-		case 4://右下
-			shift(1,1);
-			break;
-		case 5://下
-			shift(0,1);
-			break;
-		case 6://左下
-			shift(-1,1);
-			break;
-		case 7://左
-			shift(-1,0);
-			break;
-	}
+	
+	animal.a+=shiftX[animal.direction];	
+	animal.b+=shiftY[animal.direction];
+	
 
 	if(animal.a>99){
 		animal.a-=100;
