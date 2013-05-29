@@ -184,7 +184,7 @@ function reproduce(parent){
 
 	if(parent.energy>=200){
 		parent.energy=Math.floor(parent.energy/2);
-		var child=new animal(parent.direction,parent.a,parent.b,mutateGene(parent),Math.floor(parent.energy/2));
+		var child=new animal(parent.direction,parent.a,parent.b,mutateGene(parent),parent.energy);
 		animals.push(child);
 	}
 }
