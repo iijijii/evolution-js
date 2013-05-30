@@ -193,16 +193,17 @@ function mutateGene(parent){
 
 	var childGene=new Array(8);
 
-	do{
-		var selectedIngredient=generateRandom(7);
-		var modulation=generateRandom(2)-1;
-		
-		for(var i=0;i<childGene.length;i++){
-			childGene[i]=parent.gene[i];
-		}
-		childGene[selectedIngredient]=parent.gene[selectedIngredient]+modulation;
+	var selectedIngredient=generateRandom(7);
+	var modulation=generateRandom(2)-1;
 	
-	}while(childGene[selectedIngredient]<0)
+	for(var i=0;i<childGene.length;i++){
+		childGene[i]=parent.gene[i];
+	}
+	childGene[selectedIngredient]=parent.gene[selectedIngredient]+modulation;
+	
+	if(childGene[selectedIngredient]<0){
+		childGene[selectedIngredient]=0;
+	}
 	
 	return childGene;
 }
